@@ -207,4 +207,51 @@ export const reqcateDel = (id) => {
 }
 
 
+///////////////////////////商品规格管理/////////////////////////////
+// 商品规格添加
+export const reqspecsAdd = (data) => {
+    return axios({
+        url: baseUrl + '/api/specsadd',
+        method: 'post',
+        data: data
+    })
+}
 
+// 商品规格列表
+export const reqspecsList = (params) => {
+    return axios({
+        url: baseUrl + '/api/specslist',
+        method: 'get',
+        params: params
+    })
+}
+// 获取一条数据
+export const reqspecsListOne = (id) => {
+    return axios({
+        url: baseUrl + '/api/specsinfo',
+        method: 'get',
+        params: id
+    })
+}
+// 商品规格编辑
+export const reqspecsEdit = (data) => {
+    var form = new FormData()
+    for (var i in data) {
+        form.append(i, data[i])
+    }
+    return axios({
+        url: baseUrl + '/api/specsedit',
+        method: 'post',
+        data: form
+
+    })
+}
+// 商品规格删除
+export const reqspecsDel = (id) => {
+    return axios({
+        url: baseUrl + '/api/specsdelete',
+        method: 'post',
+        data: id
+
+    })
+}
