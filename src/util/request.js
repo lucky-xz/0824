@@ -18,7 +18,6 @@ export const reqMenuAdd = (data) => {
     })
 }
 // 菜单列表
-
 export const reqMenuList = (data) => {
     return axios({
         url: baseUrl + '/api/menulist',
@@ -59,13 +58,11 @@ export const reqRoleAdd = (data) => {
         data: data
     })
 }
-
 // 角色列表
 export const reqRoleList = () => {
     return axios({
         url: baseUrl + '/api/rolelist',
         method: 'get',
-
     })
 }
 // 获取一条数据
@@ -82,7 +79,6 @@ export const reqRoleEdit = (id) => {
         url: baseUrl + '/api/roleedit',
         method: 'post',
         data: id
-
     })
 }
 // 角色删除
@@ -91,12 +87,8 @@ export const reqRoleDel = (id) => {
         url: baseUrl + '/api/roledelete',
         method: 'post',
         data: id
-
     })
 }
-
-
-
 ///////////////////////////管理员管理/////////////////////////////
 // 管理员添加
 export const requserAdd = (data) => {
@@ -106,7 +98,6 @@ export const requserAdd = (data) => {
         data: qs.stringify(data)
     })
 }
-
 // 管理员列表
 export const requserList = (params) => {
     return axios({
@@ -129,7 +120,6 @@ export const requserEdit = (id) => {
         url: baseUrl + '/api/useredit',
         method: 'post',
         data: id
-
     })
 }
 // 管理员删除
@@ -150,7 +140,15 @@ export const requserCount = () => {
 
     })
 }
+// 管理员登录
+export const requserLogin = (data) => {
+    return axios({
+        url: baseUrl + '/api/userlogin',
+        method: 'post',
+data:data
 
+    })
+}
 ///////////////////////////商品分类管理/////////////////////////////
 // 商品分类添加
 export const reqcateAdd = (data) => {
@@ -159,14 +157,12 @@ export const reqcateAdd = (data) => {
     for (var i in data) {
         form.append(i, data[i])
     }
-
     return axios({
         url: baseUrl + '/api/cateadd',
         method: 'post',
         data: form
     })
 }
-
 // 商品分类列表
 export const reqcateList = (params) => {
     return axios({
@@ -193,7 +189,6 @@ export const reqcateEdit = (data) => {
         url: baseUrl + '/api/cateedit',
         method: 'post',
         data: form
-
     })
 }
 // 商品分类删除
@@ -205,8 +200,6 @@ export const reqcateDel = (id) => {
 
     })
 }
-
-
 ///////////////////////////商品规格管理/////////////////////////////
 // 商品规格添加
 export const reqspecsAdd = (data) => {
@@ -216,7 +209,6 @@ export const reqspecsAdd = (data) => {
         data: data
     })
 }
-
 // 商品规格列表
 export const reqspecsList = (params) => {
     return axios({
@@ -235,21 +227,70 @@ export const reqspecsListOne = (id) => {
 }
 // 商品规格编辑
 export const reqspecsEdit = (data) => {
-    var form = new FormData()
-    for (var i in data) {
-        form.append(i, data[i])
-    }
     return axios({
         url: baseUrl + '/api/specsedit',
         method: 'post',
-        data: form
-
+        data: data
     })
 }
 // 商品规格删除
 export const reqspecsDel = (id) => {
     return axios({
         url: baseUrl + '/api/specsdelete',
+        method: 'post',
+        data: id
+
+    })
+}
+///////////////////////////商品管理管理/////////////////////////////
+// 商品管理添加
+export const reqgoodsAdd = (data) => {
+    // 由于上传的是文件，所以需要用qs转一下
+    var form = new FormData()
+    for (var i in data) {
+        form.append(i, data[i])
+    }
+
+    return axios({
+        url: baseUrl + '/api/goodsadd',
+        method: 'post',
+        data: form
+    })
+}
+
+// 商品管理列表
+export const reqgoodsList = (params) => {
+    return axios({
+        url: baseUrl + '/api/goodslist',
+        method: 'get',
+        params: params
+    })
+}
+// 获取一条数据
+export const reqgoodsListOne = (id) => {
+    return axios({
+        url: baseUrl + '/api/goodsinfo',
+        method: 'get',
+        params: id
+    })
+}
+// 商品管理编辑
+export const reqgoodsEdit = (data) => {
+    var form = new FormData()
+    for (var i in data) {
+        form.append(i, data[i])
+    }
+    return axios({
+        url: baseUrl + '/api/goodsedit',
+        method: 'post',
+        data: form
+
+    })
+}
+// 商品管理删除
+export const reqgoodsDel = (id) => {
+    return axios({
+        url: baseUrl + '/api/goodsdelete',
         method: 'post',
         data: id
 

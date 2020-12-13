@@ -13,6 +13,13 @@
       <el-table-column prop="specsname" label="规格名称" sortable width="180">
       </el-table-column>
       <el-table-column prop="catename" label="规格属性" sortable width="180">
+        <template slot-scope="scope">
+          <el-tag v-for="item in scope.row.attrs" :key="item">{{item}}</el-tag>
+        </template>
+      </el-table-column>
+
+      <el-table-column>
+
       </el-table-column>
       <!-- <el-table-column label="图片" sortable width="180">
         <template slot-scope="scope">
@@ -40,7 +47,7 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
-import { reqcateDel } from "../../../util/request";
+import {reqspecsDel} from "../../../util/request";
 export default {
   components: {},
   data() {
@@ -53,9 +60,9 @@ export default {
     },
     // 删除
     del(id) {
-      reqcateDel({ id: id }).then((res) => {
+      reqspecsDel({ id: id }).then((res) => {
         alert("删除成功");
-        this.requestcateList();
+       this.requestspecsList();
       });
     },
     ...mapActions({

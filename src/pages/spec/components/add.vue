@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import { reqspecsAdd,reqspecsListOne } from "../../../util/request";
+import { reqspecsAdd,reqspecsListOne,reqspecsEdit } from "../../../util/request";
 import { mapActions, mapGetters } from "vuex";
 
 export default {
@@ -99,7 +99,7 @@ export default {
       reqspecsAdd(this.form).then((res) => {
         this.empty();
         this.hide();
-        // this.requestcateList();
+        this.requestspecsList();
       });
     },
     // 新增属性
@@ -114,7 +114,7 @@ export default {
     },
 
     ...mapActions({
-      requestcateList: "cate/requestcateList",
+       requestspecsList: "specs/requestspecsList",
     }),
     // 获取一条数据
     look(id) {
@@ -126,15 +126,19 @@ export default {
     },
     // 更新
     update() {
-      reqcateEdit(this.form).then((res) => {
-        this.requestcateList();
+       this.form.attrs=JSON.stringify(this.arrAttr.map(item=>{
+            return item.value
+        }))
+      reqspecsEdit(this.form).then((res) => {
+        this.requestspecsList();
         this.hide();
         this.empty();
       });
     },
   },
   mounted() {
-    this.requestcateList();
+    
+    this.requestspecsList();
   },
   watch: {},
 };

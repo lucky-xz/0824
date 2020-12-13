@@ -232,14 +232,12 @@ export default {
       reqgoodsAdd(this.form).then((res) => {
         this.empty();
         this.hide();
-        this.requestgoodsList()
       });
     },
 
     ...mapActions({
       requestcateList: "cate/requestcateList",
       requestspecsList: "specs/requestspecsList",
-      requestgoodsList: "goods/requestgoodsList",
     }),
     // 获取一条数据
     look(id) {
@@ -257,15 +255,14 @@ export default {
     update() {
       this.form.description = this.editor.txt.html()
       reqgoodsEdit(this.form).then((res) => {
+        // this.requestcateList();
         this.hide();
-           this.requestgoodsList()
       });
     },
   },
   mounted() {
     this.requestcateList();
     this.requestspecsList();
-    this.requestgoodsList()
   },
 };
 </script>

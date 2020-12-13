@@ -12,6 +12,10 @@
 import vAdd from "./components/add";
 import vList from "./components/list";
 export default {
+  // 组件内部守卫
+  // beforeRouteEnter (to, from, next) {
+  //   // ...
+  // },
   components: {
     vAdd,
     vList,

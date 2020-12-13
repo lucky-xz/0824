@@ -2,10 +2,11 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex)
 
-import { reqspecsList } from '../../util/request'
+
+import { reqgoodsList } from '../../util/request'
 const state = {
-    // 请求回来的数据
-    list: []
+    list: [],//请求回来的数据
+
 }
 const mutations = {
     changeList(state, arr) {
@@ -14,18 +15,14 @@ const mutations = {
 
 }
 const actions = {
-    requestspecsList(context) {
-        reqspecsList({
-            size: 10,
-            page: 1
+    requestgoodsList(context) {
+        reqgoodsList({
+            istree: true
         }).then(res => {
-            var arr = res.data.list;
-            arr.forEach(item => {
-                item.attrs = JSON.parse(item.attrs)
-            })
-            context.commit('changeList', arr)
+            context.commit('changeList', res.data.list)
         })
     },
+
 }
 const getters = {
     list(state) {
@@ -33,6 +30,7 @@ const getters = {
     },
 
 }
+
 export default {
     state,
     mutations,
